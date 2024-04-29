@@ -30,26 +30,67 @@ const arrow = nums.map(num => num * 2);
 console.log(arrow);
 
 // With objects:
-const students = [
+// const students = [
+//   {
+//     id: 1,
+//     name: 'Mark',
+//     profession: 'Developer',
+//     skill: 'JavaScript'
+//   },
+//   {
+//     id: 2,
+//     name: 'Ariel',
+//     profession: 'Developer',
+//     skill: 'HTML'
+//   },
+//   {
+//     id: 3,
+//     name: 'Jason',
+//     profession: 'Designer',
+//     skill: 'CSS'
+//   },
+// ];
+
+// const studentsWithIds = students.map(student => [student.name, student.id]);
+// console.log(studentsWithIds);
+
+
+// Map Challenge
+let students = [
   {
-    id: 1,
-    name: 'Mark',
-    profession: 'Developer',
-    skill: 'JavaScript'
+      name: 'John',
+      subjects: ['maths', 'english', 'cad'],
+      teacher: {maths: 'Harry', english: 'Joan', cad: 'Paul'},
+      results: {maths: 90, english: 75, cad: 87},
   },
   {
-    id: 2,
-    name: 'Ariel',
-    profession: 'Developer',
-    skill: 'HTML'
+      name: 'Emily',
+      subjects: ['science', 'english', 'art'],
+      teacher: {science: 'Iris', english: 'Joan', art: 'Simon'},
+      results: {science: 93, english: 80, art: 95},
   },
   {
-    id: 3,
-    name: 'Jason',
-    profession: 'Designer',
-    skill: 'CSS'
+      name: 'Adam',
+      subjects: ['science', 'maths', 'art'],
+      teacher: {science: 'Iris', maths: 'Harry', art: 'Simon'},
+      results: {science: 93, maths: 77, art: 95},
   },
+  {
+      name: 'Fran',
+      subjects: ['science', 'english', 'art'],
+      teacher: {science: 'Iris', english: 'Joan', art: 'Simon'},
+      results: {science: 93, english: 87, art: 95},
+  }
 ];
 
-const studentsWithIds = students.map(student => [student.name, student.id]);
-console.log(studentsWithIds);
+// single line, used different variable names so as not to clash with those below.
+let [John, ...Rest] = students.map(itm => [itm.name, itm.results]);
+console.log(John);
+console.log(Rest);
+
+console.log('\n');
+// Or create function first and use in map
+const mapper = (itm) => [itm.name, itm.results];
+let [john, ...rest] = students.map(mapper);
+console.log(john);
+console.log(rest);
